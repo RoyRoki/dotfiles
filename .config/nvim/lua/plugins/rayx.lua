@@ -12,7 +12,7 @@ return {
 			callback = function(args)
 				local bufnr = args.buf
 				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client then
+				if client and client.name ~= "tsserver" then
 					require("lsp_signature").on_attach(opts, bufnr)
 				end
 			end,

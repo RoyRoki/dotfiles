@@ -70,11 +70,11 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
+vim.keymap.set("n", "<leader>fs", vim.lsp.buf.signature_help, { desc = "[F]unction [S]ignature Help" })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*.go",
+	pattern = "*.go,*.ts,*.tsx,*.py",
 	callback = function()
 		vim.lsp.buf.format({ async = false })
 	end,
 })
-
-vim.keymap.set("n", "<leader>fs", vim.lsp.buf.signature_help, { desc = "[F]unction [S]ignature Help" })
